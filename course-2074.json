@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-brokenstring314",
-  "commit": "2dc39b5d1431fd74ec1e0ee51f96095cbc10b663",
-  "score": 3,
+  "commit": "e90fc1ee884af08f3254cdc34d927a4c24f42301",
+  "score": 7,
   "totalScore": 100,
   "exercises": [
     {
@@ -16,9 +16,9 @@
     {
       "name": "mutex_counter",
       "max": 4,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 101
+      "score": 4,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "channel",
@@ -176,9 +176,9 @@
     }
   ],
   "student": "brokenstring314",
-  "runId": "40533775685",
+  "runId": "40862588447",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
