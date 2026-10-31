@@ -2,7 +2,7 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-brokenstring314",
-  "commit": "e90fc1ee884af08f3254cdc34d927a4c24f42301",
+  "commit": "a58b804355e02139c9850978a9480bcdb70ab097",
   "score": 7,
   "totalScore": 100,
   "exercises": [
@@ -24,8 +24,8 @@
       "name": "channel",
       "max": 4,
       "score": 0,
-      "status": "fail",
-      "exitCode": 101
+      "status": "timeout",
+      "exitCode": 124
     },
     {
       "name": "process_pipe",
@@ -176,9 +176,9 @@
     }
   ],
   "student": "brokenstring314",
-  "runId": "40862588447",
+  "runId": "41215565315",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
