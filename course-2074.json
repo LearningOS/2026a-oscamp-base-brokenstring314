@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-brokenstring314",
-  "commit": "12f3d10e3f73a55dd5ee3d343e2b370abe506109",
-  "score": 11,
+  "commit": "d8db6c1ac0d983c76eea04a4fa6a722e4cab9492",
+  "score": 15,
   "totalScore": 100,
   "exercises": [
     {
@@ -30,9 +30,9 @@
     {
       "name": "process_pipe",
       "max": 4,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 101
+      "score": 4,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "mem_primitives",
@@ -176,9 +176,9 @@
     }
   ],
   "student": "brokenstring314",
-  "runId": "41217029817",
+  "runId": "41591203656",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
