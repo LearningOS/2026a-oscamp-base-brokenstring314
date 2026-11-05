@@ -2,7 +2,7 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-brokenstring314",
-  "commit": "25c3e300f5180831991a377e46a9ba62082502b5",
+  "commit": "f7fef24780943673183155c6ceabf509cb4ab289",
   "score": 19,
   "totalScore": 100,
   "exercises": [
@@ -176,9 +176,9 @@
     }
   ],
   "student": "brokenstring314",
-  "runId": "42009961239",
+  "runId": "42046156701",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
