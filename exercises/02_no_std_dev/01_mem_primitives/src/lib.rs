@@ -191,4 +191,27 @@ mod tests {
         let b = b"abc\0";
         assert!(unsafe { my_strcmp(a.as_ptr(), b.as_ptr()) } > 0);
     }
+
+    // 以下是增加的测试用例
+    #[test]
+    fn test_memmove_overlap_backward() {
+        // Copy buf[1..5] to buf[0..4], shifting left by 1
+        let mut buf = [1u8, 2, 3, 4, 5];
+        unsafe { my_memmove(buf.as_mut_ptr(), buf.as_ptr().add(1), 4) };
+        assert_eq!(buf, [2, 3, 4, 5, 5]);
+    }
+
+    #[test]
+    fn test_strcmp_prefix_less() {
+        let a = b"ab\0";
+        let b = b"abc\0";
+        assert!(unsafe { my_strcmp(a.as_ptr(), b.as_ptr()) } < 0);
+    }
+
+    #[test]
+    fn test_strcmp_prefix_greater() {
+        let a = b"abc\0";
+        let b = b"ab\0";
+        assert!(unsafe { my_strcmp(a.as_ptr(), b.as_ptr()) } > 0);
+    }
 }
