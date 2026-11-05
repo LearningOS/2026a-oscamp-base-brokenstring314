@@ -62,11 +62,20 @@ pub unsafe extern "C" fn my_memset(dst: *mut u8, c: u8, n: usize) -> *mut u8 {
 pub unsafe extern "C" fn my_memmove(dst: *mut u8, src: *const u8, n: usize) -> *mut u8 {
     // TODO: Implement memmove
     // Hint: when dst > src and regions overlap, copy backwards (from end to start)
-    let mut i = n;
-    while i > 0 {
-        i -= 1;
-        *dst.add(i) = *src.add(i);
-    }
+    if (dst as *const u8) > src {
+        let mut i = n;
+        while i > 0 {
+            i -= 1;
+            *dst.add(i) = *src.add(i);
+        }
+    } else {
+        let mut i = 0;
+        while i < n {
+            *dst.add(i) = *src.add(i);
+            i += 1;
+        }
+    };
+
     dst
 }
 
@@ -97,12 +106,21 @@ pub unsafe extern "C" fn my_strlen(s: *const u8) -> usize {
 pub unsafe extern "C" fn my_strcmp(s1: *const u8, s2: *const u8) -> i32 {
     // TODO: Implement strcmp
     let mut i = 0;
-    while  ((*s2.add(i)) != 0) && ((*s1.add(i)) != 0) {
-        let p:i32 = ((*s1.add(i)) as i32) - ((*s2.add(i)) as i32);
-        if p!=0 {return p;}
+
+    while ((*s2.add(i)) != 0) && ((*s1.add(i)) != 0) {
+        let p: i32 = ((*s1.add(i)) as i32) - ((*s2.add(i)) as i32);
+        if p != 0 {
+            return p;
+        }
         i += 1;
     }
-    0
+    if ((*s2.add(i)) != 0) < ((*s1.add(i)) != 0) {
+        return 1;
+    } else if ((*s2.add(i)) != 0) > ((*s1.add(i)) != 0) {
+        return -1;
+    } else {
+        return 0;
+    }
 }
 
 // ============================================================
