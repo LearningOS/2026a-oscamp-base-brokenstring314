@@ -33,7 +33,6 @@
 
 use std::io::{self, Read, Write};
 use std::process::{Command, Stdio};
-use std::str::FromStr;
 
 /// Execute the given shell command and return its stdout output.
 ///
@@ -130,14 +129,9 @@ pub fn get_exit_code(command: &str) -> i32 {
     // TODO: Use Command::new("sh").args(["-c", command])
     // TODO: Execute and get status
     // TODO: Return exit code
-    let child = Command::new("sh")
-        .args(["-c", command])
-        .stdin(Stdio::piped())
-        .stdout(Stdio::piped())
-        .status()
-        .unwrap();
+    let child = Command::new("sh").args(["-c", command]).status().unwrap();
 
-    child.code().unwrap()
+    child.code().unwrap_or(-1)
 }
 
 /// Execute the given shell command and return its stdout output as a `Result`.
@@ -207,12 +201,13 @@ pub fn pipe_through_grep(pattern: &str, input: &str) -> String {
         .arg(pattern)
         .stdin(Stdio::piped()) // 父进程能写它的 stdin
         .stdout(Stdio::piped()) // 父进程能读它的 stdout
-        .spawn().unwrap();
-    child.stdin.take().unwrap().write_all(input.as_bytes());
-    
+        .spawn()
+        .unwrap();
+    child.stdin.take().unwrap().write_all(input.as_bytes()).expect("write_all失败");
+
     let mut res = String::new();
-    child.stdout.take().unwrap().read_to_string(&mut res);
-    child.wait();
+    child.stdout.take().unwrap().read_to_string(&mut res).expect("read_to_string失败");
+    child.wait().expect("wait失败");
     res
 }
 
